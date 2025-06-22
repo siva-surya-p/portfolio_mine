@@ -1,5 +1,5 @@
 import profilePic from '../assets/profile.jpg'
-import resumePDF from '../assets/resume.pdf'
+// Resume is served from the public directory
 
 function Home() {
   return (
@@ -9,7 +9,7 @@ function Home() {
       </div>
       <h1 className="fw-bold mb-2">Siva Surya P</h1>
       <p className="lead mb-4">Software Developer | Learned and worked in a Start-Up | AI Enthusiast</p>
-      <a href={resumePDF} download className="btn btn-primary btn-lg fw-semibold">
+      <a href="/assets/resume.pdf" download="SivaSurya_Resume.pdf" className="btn btn-primary btn-lg fw-semibold">
         Download Resume
       </a>
     </div>
