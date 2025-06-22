@@ -9,7 +9,13 @@ function Home() {
       </div>
       <h1 className="fw-bold mb-2">Siva Surya P</h1>
       <p className="lead mb-4">Software Developer | Learned and worked in a Start-Up | AI Enthusiast</p>
-      <a href="/assets/resume.pdf" download="SivaSurya_Resume.pdf" className="btn btn-primary btn-lg fw-semibold">
+      <a 
+        href="/assets/SivaSurya_Resume.pdf" 
+        download="SivaSurya_Resume.pdf" 
+        className="btn btn-primary btn-lg fw-semibold"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         Download Resume
       </a>
     </div>
