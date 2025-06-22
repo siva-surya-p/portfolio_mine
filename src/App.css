@@ -1,0 +1,175 @@
+#root {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  text-align: initial;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background 0.3s, color 0.3s;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.page {
+  flex: 1;
+  padding: 0;
+  max-width: 100%;
+  margin: 0;
+  width: 100%;
+  transition: background 0.3s, color 0.3s;
+  overflow-x: hidden;
+}
+
+:root {
+  --light-bg: #f8f9fa;
+  --light-text: #212529;
+  --dark-bg: #1a1a2e;
+  --dark-text: #e6e6e6;
+  --dark-secondary: #16213e;
+  --dark-border: #2a2a3c;
+}
+
+/* Light Theme */
+.app-container.light {
+  background-color: var(--light-bg);
+  color: var(--light-text);
+}
+
+.app-container.light .card {
+  background-color: #ffffff;
+  border-color: rgba(0, 0, 0, 0.125);
+}
+
+.app-container.light .form-control,
+.app-container.light .form-select {
+  background-color: #ffffff;
+  border-color: #ced4da;
+  color: var(--light-text);
+}
+
+/* Dark Theme */
+.app-container.dark {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+}
+
+.app-container.dark .card {
+  background-color: var(--dark-secondary);
+  border-color: var(--dark-border);
+  color: var(--dark-text);
+}
+
+.app-container.dark .card-title,
+.app-container.dark .card-text,
+.app-container.dark h1,
+.app-container.dark h2,
+.app-container.dark h3,
+.app-container.dark h4,
+.app-container.dark h5,
+.app-container.dark h6,
+.app-container.dark p,
+.app-container.dark label,
+.app-container.dark .text-muted {
+  color: var(--dark-text) !important;
+}
+
+.app-container.dark .form-control,
+.app-container.dark .form-select,
+.app-container.dark .form-control:focus,
+.app-container.dark .form-select:focus {
+  background-color: #2a2a3c;
+  border-color: #3e3e5e;
+  color: var(--dark-text);
+}
+
+.app-container.dark .form-control::placeholder {
+  color: #9a9a9a;
+}
+
+.app-container.dark .btn-outline-primary {
+  color: #80bdff;
+  border-color: #80bdff;
+}
+
+.app-container.dark .btn-outline-primary:hover {
+  background-color: #0b5ed7;
+  border-color: #0a58ca;
+}
+
+/* Navbar specific dark theme */
+.app-container.dark .navbar {
+  background-color: var(--dark-secondary) !important;
+  border-bottom: 1px solid var(--dark-border);
+}
+
+.app-container.dark .navbar-brand,
+.app-container.dark .nav-link {
+  color: var(--dark-text) !important;
+}
+
+.app-container.dark .navbar-toggler {
+  border-color: var(--dark-text);
+}
+
+.app-container.dark .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Links in dark mode */
+.app-container.dark a {
+  color: #80bdff;
+}
+
+.app-container.dark a:hover {
+  color: #a3cff9;
+}
+
+.navbar {
+  margin-bottom: 2rem;
+}
+
+button, .btn {
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
