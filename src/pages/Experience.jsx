@@ -76,10 +76,6 @@ function Experience() {
                     <Link 
                       to="/projects" 
                       className="btn btn-outline-primary btn-sm"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
-                      }}
                     >
                       View Projects <FaExternalLinkAlt className="ms-1" />
                     </Link>
