@@ -19,12 +19,14 @@ export default defineConfig({
   
   build: {
     outDir: 'dist',
-    sourcemap: true,
+    sourcemap: process.env.NODE_ENV !== 'production',
+    minify: 'terser',
+    cssMinify: true,
     rollupOptions: {
       output: {
         manualChunks: (id) => {
           if (id.includes('node_modules')) {
-            if (id.includes('react') || id.includes('react-dom')) {
+            if (id.includes('react') || id.includes('react-dom') || id.includes('scheduler')) {
               return 'vendor-react';
             }
             if (id.includes('bootstrap')) {
@@ -38,12 +40,11 @@ export default defineConfig({
   },
   
   optimizeDeps: {
-    include: [
-      'react',
-      'react-dom',
-      'react-router-dom',
-      'react/jsx-runtime',
-    ],
-    exclude: []
+    include: ['react', 'react-dom'],
+    exclude: ['@babel/runtime/helpers/esm/']
+  },
+  
+  define: {
+    'process.env': {}
   }
 });

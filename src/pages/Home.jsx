@@ -20,15 +20,18 @@ function Home() {
             />
             <h1 className="fw-bold mb-2">Siva Surya P</h1>
             <p className="lead text-muted mb-4">Software Developer | Learned and worked in a Start-Up | AI Enthusiast</p>
+            {/* Download button temporarily hidden
             <a 
-              href="/assets/SivaSurya_Resume.pdf" 
-              download="SivaSurya_Resume.pdf" 
+              href="/assets/SivaSurya_Resume_July2025.pdf"
+              download="SivaSurya_Resume.pdf"
               className="btn btn-primary btn-lg fw-semibold px-4"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer nofollow"
+              style={{display: 'none'}}
             >
               Download Resume
             </a>
+            */}
           </div>
           
           <div className="col-lg-8">
