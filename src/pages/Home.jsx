@@ -12,8 +12,8 @@ function Home() {
               alt="Siva Surya P" 
               className="rounded-circle shadow mb-3" 
               style={{ 
-                width: '200px', 
-                height: '200px', 
+                width: 'clamp(150px, 25vw, 200px)', 
+                height: 'clamp(150px, 25vw, 200px)', 
                 objectFit: 'cover', 
                 border: '5px solid var(--primary)' 
               }} 
@@ -72,38 +72,38 @@ function Home() {
                 
                 <div className="mt-5">
                   <h4 className="fw-bold mb-4">Technical Skills</h4>
-                  <div className="row g-3">
-                    <div className="col-6 col-md-4">
-                      <div className="p-3 bg-light rounded-3 h-100">
-                        <h6 className="fw-bold mb-2">Frontend</h6>
-                        <p className="mb-0 small">HTML, CSS, JavaScript, Angular</p>
-                      </div>
-                    </div>
-                    <div className="col-6 col-md-4">
-                      <div className="p-3 bg-light rounded-3 h-100">
-                        <h6 className="fw-bold mb-2">Backend</h6>
-                        <p className="mb-0 small">Node.js, Express.js, REST APIs</p>
-                      </div>
-                    </div>
-                    <div className="col-6 col-md-4">
-                      <div className="p-3 bg-light rounded-3 h-100">
-                        <h6 className="fw-bold mb-2">Databases</h6>
-                        <p className="mb-0 small">MongoDB, MySQL</p>
-                      </div>
-                    </div>
-                    <div className="col-6 col-md-4">
-                      <div className="p-3 bg-light rounded-3 h-100">
-                        <h6 className="fw-bold mb-2">Learning</h6>
-                        <p className="mb-0 small">React, Java, Data Structures, System Design</p>
-                      </div>
-                    </div>
-                    <div className="col-6 col-md-4">
-                      <div className="p-3 bg-light rounded-3 h-100">
-                        <h6 className="fw-bold mb-2">Tools</h6>
-                        <p className="mb-0 small">Git, VS Code, Postman</p>
-                      </div>
+                                  <div className="row g-3">
+                  <div className="col-12 col-sm-6 col-md-4">
+                    <div className="p-3 bg-light rounded-3 h-100">
+                      <h6 className="fw-bold mb-2">Frontend</h6>
+                      <p className="mb-0 small">HTML, CSS, JavaScript, Angular</p>
                     </div>
                   </div>
+                  <div className="col-12 col-sm-6 col-md-4">
+                    <div className="p-3 bg-light rounded-3 h-100">
+                      <h6 className="fw-bold mb-2">Backend</h6>
+                      <p className="mb-0 small">Node.js, Express.js, REST APIs</p>
+                    </div>
+                  </div>
+                  <div className="col-12 col-sm-6 col-md-4">
+                    <div className="p-3 bg-light rounded-3 h-100">
+                      <h6 className="fw-bold mb-2">Databases</h6>
+                      <p className="mb-0 small">MongoDB, MySQL</p>
+                    </div>
+                  </div>
+                  <div className="col-12 col-sm-6 col-md-4">
+                    <div className="p-3 bg-light rounded-3 h-100">
+                      <h6 className="fw-bold mb-2">Learning</h6>
+                      <p className="mb-0 small">React, Java, Data Structures, System Design</p>
+                    </div>
+                  </div>
+                  <div className="col-12 col-sm-6 col-md-4">
+                    <div className="p-3 bg-light rounded-3 h-100">
+                      <h6 className="fw-bold mb-2">Tools</h6>
+                      <p className="mb-0 small">Git, VS Code, Postman</p>
+                    </div>
+                  </div>
+                </div>
                 </div>
                 
                 <div className="mt-5">

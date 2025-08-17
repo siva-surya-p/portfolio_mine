@@ -214,6 +214,138 @@
   opacity: 0.9;
 }
 
+/* Dark mode LeetCode stats section */
+.app-container.dark .card.bg-light {
+  background-color: var(--dark-secondary) !important;
+  border: 1px solid var(--dark-border);
+}
+
+.app-container.dark .card.bg-light h3,
+.app-container.dark .card.bg-light h4 {
+  color: var(--dark-text) !important;
+}
+
+.app-container.dark .card.bg-light .bg-white {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid var(--dark-border);
+}
+
+.app-container.dark .card.bg-light .bg-white h4 {
+  color: var(--primary) !important;
+}
+
+.app-container.dark .card.bg-light .bg-white p {
+  color: var(--dark-text) !important;
+  opacity: 0.9;
+}
+
+/* Additional dark mode fixes for LeetCode stats */
+.app-container.dark .bg-light {
+  background-color: var(--dark-secondary) !important;
+}
+
+.app-container.dark .bg-white {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid var(--dark-border);
+}
+
+.app-container.dark .text-center h3,
+.app-container.dark .text-center h4 {
+  color: var(--dark-text) !important;
+}
+
+.app-container.dark .text-center p {
+  color: var(--dark-text) !important;
+}
+
+/* Dark mode username badge styling */
+.app-container.dark .badge.bg-light {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: var(--dark-text) !important;
+  font-weight: 500;
+}
+
+.app-container.dark .badge.bg-light.text-dark {
+  color: var(--dark-text) !important;
+}
+
+/* Breadcrumb Navigation Styling */
+.breadcrumb-nav {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.breadcrumb {
+  background: transparent;
+  margin: 0;
+  padding: 0;
+}
+
+.breadcrumb-item {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.breadcrumb-link {
+  color: var(--primary);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.breadcrumb-link:hover {
+  color: var(--primary);
+  background-color: rgba(0, 123, 255, 0.1);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.breadcrumb-item.active {
+  color: #495057;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 0.375rem;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  content: "›";
+  color: #6c757d;
+  font-weight: bold;
+  margin: 0 0.5rem;
+}
+
+/* Dark mode breadcrumb styling */
+.app-container.dark .breadcrumb-nav {
+  background: linear-gradient(135deg, #2a2a3c 0%, #1a1a2e 100%);
+  border-bottom: 1px solid var(--dark-border);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.app-container.dark .breadcrumb-item.active {
+  color: #e9ecef;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.app-container.dark .breadcrumb-link {
+  color: #80bdff;
+}
+
+.app-container.dark .breadcrumb-link:hover {
+  color: #a3cff9;
+  background-color: rgba(128, 189, 255, 0.1);
+}
+
+.app-container.dark .breadcrumb-item + .breadcrumb-item::before {
+  color: #adb5bd;
+}
+
 /* Ensure text is visible in both themes */
 .bg-light h6 {
   color: var(--dark);
@@ -222,6 +354,73 @@
 
 .bg-light p {
   color: #495057;
+}
+
+/* Mobile Responsiveness Improvements */
+@media (max-width: 768px) {
+  .container-fluid {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  .card {
+    padding: 1rem;
+  }
+  
+  .navbar-brand {
+    font-size: 1.1rem;
+  }
+  
+  .breadcrumb-nav {
+    padding: 0.5rem 0;
+  }
+  
+  .breadcrumb-item {
+    font-size: 0.85rem;
+  }
+  
+  .breadcrumb-link {
+    padding: 0.2rem 0.4rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .container-fluid {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  .card {
+    padding: 0.75rem;
+  }
+  
+  .navbar-brand {
+    font-size: 1rem;
+  }
+  
+  .breadcrumb-nav {
+    padding: 0.25rem 0;
+  }
+  
+  .breadcrumb-item {
+    font-size: 0.8rem;
+  }
+  
+  .breadcrumb-link {
+    padding: 0.15rem 0.3rem;
+  }
+  
+  .page h2 {
+    font-size: 1.75rem;
+  }
+  
+  .page h3 {
+    font-size: 1.5rem;
+  }
+  
+  .page h4 {
+    font-size: 1.25rem;
+  }
 }
 
 /* Links in dark mode */

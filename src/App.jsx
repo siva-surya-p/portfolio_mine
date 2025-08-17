@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Skills from './pages/Skills';
 import Projects from './pages/Projects';
 import Experience from './pages/Experience';
+import CodingProfile from './pages/CodingProfile';
 import Navbar from './components/Navbar';
 import './App.css';
 
@@ -36,6 +37,7 @@ function App() {
             <Route path="/skills" element={<Skills />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/experience" element={<Experience />} />
+            <Route path="/coding-profile" element={<CodingProfile />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </Router>
