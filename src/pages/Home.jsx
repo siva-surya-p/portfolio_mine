@@ -76,7 +76,7 @@ function Home() {
                   <div className="col-12 col-sm-6 col-md-4">
                     <div className="p-3 bg-light rounded-3 h-100">
                       <h6 className="fw-bold mb-2">Frontend</h6>
-                      <p className="mb-0 small">HTML, CSS, JavaScript, Angular</p>
+                      <p className="mb-0 small">HTML, CSS, JavaScript, Angular,Bootstrap</p>
                     </div>
                   </div>
                   <div className="col-12 col-sm-6 col-md-4">
@@ -100,7 +100,7 @@ function Home() {
                   <div className="col-12 col-sm-6 col-md-4">
                     <div className="p-3 bg-light rounded-3 h-100">
                       <h6 className="fw-bold mb-2">Tools</h6>
-                      <p className="mb-0 small">Git, VS Code, Postman</p>
+                      <p className="mb-0 small">Git, VS Code, Postman, Microsoft Copilot</p>
                     </div>
                   </div>
                 </div>
