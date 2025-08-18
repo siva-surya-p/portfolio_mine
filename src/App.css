@@ -196,7 +196,8 @@
 .nav-link.active {
   font-weight: 600;
   color: var(--primary) !important;
-  background-color: rgba(var(--primary-rgb), 0.1);
+  /* Use a safe translucent primary background without relying on undefined --primary-rgb */
+  background-color: rgba(13, 110, 253, 0.12);
 }
 
 .nav-link.active::after {
@@ -217,8 +218,8 @@
 }
 
 .app-container.dark .nav-link.active {
-  color: var(--primary-light) !important;
-  background-color: rgba(var(--primary-rgb), 0.2);
+  color: var(--primary) !important;
+  background-color: rgba(13, 110, 253, 0.2);
 }
 
 /* Dark mode skills tiles */
@@ -290,6 +291,11 @@
 }
 
 .app-container.dark .badge.bg-light.text-dark {
+  color: var(--dark-text) !important;
+}
+
+/* Ensure any Bootstrap text-dark utility doesn't reduce readability in dark theme */
+.app-container.dark .text-dark {
   color: var(--dark-text) !important;
 }
 
@@ -534,4 +540,18 @@ button, .btn {
 
 button:active, .btn:active {
   transform: translateY(1px);
+}
+
+/* Code editor specific helpers */
+.code-editor-textarea::placeholder {
+  color: #94a3b8; /* slate-400 */
+  opacity: 1;
+}
+.app-container.dark .code-editor-textarea::placeholder {
+  color: #9aa3b2; /* slightly lighter for dark bg */
+}
+
+.app-container.dark .form-select,
+.app-container.dark .form-control {
+  color: var(--dark-text);
 }

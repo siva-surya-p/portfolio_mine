@@ -6,6 +6,7 @@ import Projects from './pages/Projects';
 import Experience from './pages/Experience';
 import CodingProfile from './pages/CodingProfile';
 import GitHubProfile from './pages/GitHubProfile';
+import CodeEditor from './pages/CodeEditor';
 import Navbar from './components/Navbar';
 import './App.css';
 
@@ -37,6 +38,7 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/skills" element={<Skills />} />
             <Route path="/projects" element={<Projects />} />
+            <Route path="/projects/code-editor" element={<CodeEditor />} />
             <Route path="/experience" element={<Experience />} />
             <Route path="/coding-profile" element={<CodingProfile />} />
             <Route path="/github" element={<GitHubProfile />} />
