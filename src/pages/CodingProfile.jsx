@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { FaGithub, FaHackerrank, FaCode } from 'react-icons/fa';
-import { SiLeetcode, SiCodechef, SiHackerearth } from 'react-icons/si';
+import { FaHackerrank, FaCode } from 'react-icons/fa';
+import { SiLeetcode, SiGeeksforgeeks } from 'react-icons/si';
 
 function CodingProfile() {
   const [leetcodeStats, setLeetcodeStats] = useState({
@@ -12,30 +12,34 @@ function CodingProfile() {
     error: null
   });
 
+  const [gfgStats, setGfgStats] = useState({
+    totalSolved: 0,
+    easy: 0,
+    medium: 0,
+    hard: 0,
+    school: 0,
+    basic: 0,
+    loading: true,
+    error: null
+  });
+
   useEffect(() => {
     document.title = "Coding Profile | Siva Surya P";
     fetchLeetcodeStats();
+    fetchGfgStats();
   }, []);
 
     const fetchLeetcodeStats = async () => {
     try {
-      console.log('🔍 Fetching LeetCode stats...');
-      
       // Method 1: Try the public stats API first
       const apiUrl = `https://leetcode-stats-api.herokuapp.com/suryasivap457`;
-      console.log('📡 API URL:', apiUrl);
-      
       const response = await fetch(apiUrl);
-      console.log('📥 Response status:', response.status);
-      console.log('📥 Response ok:', response.ok);
       
       if (response.ok) {
         const data = await response.json();
-        console.log('📊 API Response data:', data);
         
         // Check if we have the expected data structure
         if (data && data.totalSolved !== undefined) {
-          console.log('✅ API Success - Setting real data');
           setLeetcodeStats({
             totalSolved: data.totalSolved || 0,
             easy: data.easySolved || 0,
@@ -46,7 +50,6 @@ function CodingProfile() {
           });
           return;
         } else if (data && data.status === 'Success') {
-          console.log('✅ API Success (alternative format) - Setting real data');
           setLeetcodeStats({
             totalSolved: data.totalSolved || 0,
             easy: data.easySolved || 0,
@@ -56,15 +59,10 @@ function CodingProfile() {
             error: null
           });
           return;
-        } else {
-          console.log('❌ API data structure unexpected:', data);
         }
-      } else {
-        console.log('❌ API response not ok:', response.status, response.statusText);
       }
       
       // Method 2: Fallback to hardcoded data (works everywhere)
-      console.log('🔄 Using fallback data');
       setLeetcodeStats({
         totalSolved: 205,
         easy: 85,
@@ -75,9 +73,7 @@ function CodingProfile() {
       });
       
     } catch (error) {
-      console.error('❌ Error fetching LeetCode stats:', error);
       // Fallback to hardcoded data (works everywhere)
-      console.log('🔄 Using fallback data due to error');
       setLeetcodeStats({
         totalSolved: 205,
         easy: 85,
@@ -89,6 +85,35 @@ function CodingProfile() {
     }
   };
 
+  const fetchGfgStats = async () => {
+    try {
+      const apiUrl = `https://geeks-for-geeks-stats-api.vercel.app/?raw=y&userName=suryasicwgu`;
+      const response = await fetch(apiUrl);
+      
+      if (response.ok) {
+        const data = await response.json();
+        if (data && data.totalProblemsSolved !== undefined) {
+          setGfgStats({
+            totalSolved: data.totalProblemsSolved || 0,
+            easy: data.Easy || 0,
+            medium: data.Medium || 0,
+            hard: data.Hard || 0,
+            school: data.School || 0,
+            basic: data.Basic || 0,
+            loading: false,
+            error: null
+          });
+          return;
+        }
+      }
+      // Fallback to hardcoded data if API fails
+      setGfgStats({ totalSolved: 0, easy: 0, medium: 0, hard: 0, school: 0, basic: 0, loading: false, error: 'Failed to fetch GFG stats' });
+    } catch (error) {
+      setGfgStats({ totalSolved: 0, easy: 0, medium: 0, hard: 0, school: 0, basic: 0, loading: false, error: 'Failed to fetch GFG stats' });
+    }
+  };
+
+
   const codingProfiles = [
     {
       name: 'LeetCode',
@@ -97,14 +122,20 @@ function CodingProfile() {
       username: 'suryasivap457',
       description: `Solved ${leetcodeStats.totalSolved} problems with focus on Data Structures and Algorithms`
     },
+    {
+      name: 'GeeksforGeeks',
+      icon: <SiGeeksforgeeks className="text-success" size={24} />,
+      url: 'https://www.geeksforgeeks.org/user/suryasicwgu/',
+      username: 'suryasicwgu',
+      description: `Solved ${gfgStats.totalSolved} problems across various difficulty levels`
+    },
     // {
-    //   name: 'GitHub',
-    //   icon: <FaGithub className="text-dark" size={24} />,
-    //   url: 'https://github.com/your_username',
-    //   username: 'your_username',
-    //   description: 'Check out my open-source projects and contributions'
-    // },
-    // {
+    //   name: 'HackerRank',
+    //   icon: <FaHackerrank className="text-success" size={24} />,
+    //   url: 'https://www.hackerrank.com/profile/suryasivap457',
+    //   username: 'suryasivap457',
+    //   description: '5-star coder in Problem Solving and Python'
+    // }
     //   name: 'HackerRank',
     //   icon: <FaHackerrank className="text-success" size={24} />,
     //   url: 'https://www.hackerrank.com/your_username',
@@ -134,81 +165,118 @@ function CodingProfile() {
       
       <div className="row g-4">
         {codingProfiles.map((profile, index) => (
-          <div key={index} className="col-md-6 col-lg-4">
+          <div key={index} className={profile.name === 'GitHub' ? 'col-12' : 'col-md-6'}>
             <div className="card h-100 shadow-sm">
-              <div className="card-body text-center p-4">
-                <div className="mb-3">
-                  {profile.icon}
+              <div className="card-body p-4">
+                <div className="text-center">
+                  <div className="mb-3">
+                    {profile.icon}
+                  </div>
+                  <h3 className="h4 mb-3">{profile.name}</h3>
+                  <p className="text-muted mb-3">{profile.description}</p>
+                  <p className="mb-3">
+                    <span className="badge bg-light text-dark">@{profile.username}</span>
+                  </p>
+                  <a 
+                    href={profile.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="btn btn-outline-primary mb-3"
+                  >
+                    View Profile <FaCode className="ms-1" />
+                  </a>
                 </div>
-                <h3 className="h4 mb-3">{profile.name}</h3>
-                <p className="text-muted mb-3">{profile.description}</p>
-                <p className="mb-3">
-                  <span className="badge bg-light text-dark">@{profile.username}</span>
-                </p>
-                <a 
-                  href={profile.url} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="btn btn-outline-primary"
-                >
-                  View Profile <FaCode className="ms-1" />
-                </a>
+                
+                {/* GFG Stats within the tile */}
+                {profile.name === 'GeeksforGeeks' && (
+                  <div className="mt-3 pt-3 border-top text-center">
+                    <h6 className="fw-semibold mb-3">GFG Stats</h6>
+                    <div className="d-flex justify-content-around align-items-center mb-3">
+                      <div>
+                        <h5 className="fw-bold mb-0">{gfgStats.totalSolved}</h5>
+                        <small className="text-muted">Total Solved</small>
+                      </div>
+                    </div>
+                    <div className="row g-2 text-center">
+                      <div className="col-4">
+                        <div className="p-2 bg-info bg-opacity-10 rounded">
+                          <div className="fw-bold text-info">{gfgStats.school}</div>
+                          <small className="text-muted">School</small>
+                        </div>
+                      </div>
+                      <div className="col-4">
+                        <div className="p-2 bg-primary bg-opacity-10 rounded">
+                          <div className="fw-bold text-primary">{gfgStats.basic}</div>
+                          <small className="text-muted">Basic</small>
+                        </div>
+                      </div>
+                      <div className="col-4">
+                        <div className="p-2 bg-success bg-opacity-10 rounded">
+                          <div className="fw-bold text-success">{gfgStats.easy}</div>
+                          <small className="text-muted">Easy</small>
+                        </div>
+                      </div>
+                      <div className="col-4">
+                        <div className="p-2 bg-warning bg-opacity-10 rounded">
+                          <div className="fw-bold text-warning">{gfgStats.medium}</div>
+                          <small className="text-muted">Medium</small>
+                        </div>
+                      </div>
+                      <div className="col-4">
+                        <div className="p-2 bg-danger bg-opacity-10 rounded">
+                          <div className="fw-bold text-danger">{gfgStats.hard}</div>
+                          <small className="text-muted">Hard</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* LeetCode Stats within the tile */}
+                {profile.name === 'LeetCode' && (
+                  <div className="mt-3 pt-3 border-top text-center">
+                    <h6 className="fw-semibold mb-3">LeetCode Stats</h6>
+                    <div className="d-flex justify-content-around align-items-center mb-3">
+                      <div>
+                        <h5 className="fw-bold mb-0">{leetcodeStats.totalSolved}</h5>
+                        <small className="text-muted">Total Solved</small>
+                      </div>
+                    </div>
+                    <div className="row g-2 text-center">
+                      <div className="col-4">
+                        <div className="p-2 bg-success bg-opacity-10 rounded">
+                          <div className="fw-bold text-success">{leetcodeStats.easy}</div>
+                          <small className="text-muted">Easy</small>
+                        </div>
+                      </div>
+                      <div className="col-4">
+                        <div className="p-2 bg-warning bg-opacity-10 rounded">
+                          <div className="fw-bold text-warning">{leetcodeStats.medium}</div>
+                          <small className="text-muted">Medium</small>
+                        </div>
+                      </div>
+                      <div className="col-4">
+                        <div className="p-2 bg-danger bg-opacity-10 rounded">
+                          <div className="fw-bold text-danger">{leetcodeStats.hard}</div>
+                          <small className="text-muted">Hard</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* GitHub Calendar */}
+                {profile.extraContent && (
+                  <div className="mt-4 pt-3 border-top">
+                    {profile.extraContent}
+                  </div>
+                )}
               </div>
             </div>
           </div>
         ))}
       </div>
 
-      <div className="text-center mt-5">
-        <div className="card bg-light p-4">
-          <h3 className="h4 mb-3">LeetCode Stats</h3>
-          {leetcodeStats.loading ? (
-            <div className="text-center py-4">
-              <div className="spinner-border text-primary" role="status">
-                <span className="visually-hidden">Loading...</span>
-              </div>
-              <p className="mt-2">Loading your LeetCode stats...</p>
-            </div>
-          ) : leetcodeStats.error ? (
-            <div className="text-center py-4">
-              <p className="text-danger">Unable to fetch stats. Please check your username.</p>
-              <button 
-                className="btn btn-outline-primary btn-sm"
-                onClick={fetchLeetcodeStats}
-              >
-                Retry
-              </button>
-            </div>
-          ) : (
-            <div className="row g-4">
-              <div className="col-6 col-md-3">
-                <div className="p-3 bg-white rounded-3 shadow-sm">
-                  <h4 className="text-primary fw-bold mb-1">{leetcodeStats.totalSolved}</h4>
-                  <p className="mb-0 small">Problems Solved</p>
-                </div>
-              </div>
-              <div className="col-6 col-md-3">
-                <div className="p-3 bg-white rounded-3 shadow-sm">
-                  <h4 className="text-success fw-bold mb-1">{leetcodeStats.easy}</h4>
-                  <p className="mb-0 small">Easy</p>
-                </div>
-              </div>
-              <div className="col-6 col-md-3">
-                <div className="p-3 bg-white rounded-3 shadow-sm">
-                  <h4 className="text-warning fw-bold mb-1">{leetcodeStats.medium}</h4>
-                  <p className="mb-0 small">Medium</p>
-                </div>
-              </div>
-              <div className="col-6 col-md-3">
-                <div className="p-3 bg-white rounded-3 shadow-sm">
-                  <h4 className="text-danger fw-bold mb-1">{leetcodeStats.hard}</h4>
-                  <p className="mb-0 small">Hard</p>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
     </div>
   );
 }

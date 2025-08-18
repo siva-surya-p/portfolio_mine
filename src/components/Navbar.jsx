@@ -1,5 +1,6 @@
 import { useContext, useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { FaBars } from 'react-icons/fa';
 import { FaCode, FaHome, FaChevronRight } from 'react-icons/fa';
 import { ThemeContext } from '../App';
 
@@ -7,103 +8,117 @@ function Navbar() {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  // Helper function to get page titles for breadcrumbs
+  // Helper function to get page titles for breadcrumbs and document title
   const getPageTitle = (pathname) => {
-    switch (pathname) {
+    // Remove any query parameters or hashes
+    const cleanPath = pathname.split('?')[0].split('#')[0];
+    
+    switch (cleanPath) {
+      case '/':
+      case '/home':
+        return 'Home';
       case '/skills':
+      case '/skills/':
         return 'Skills & Learning';
       case '/projects':
+      case '/projects/':
         return 'Projects';
       case '/experience':
+      case '/experience/':
         return 'Experience';
       case '/coding-profile':
+      case '/coding-profile/':
         return 'Coding Profile';
+      case '/github':
+      case '/github/':
+        return 'GitHub Profile';
+      case '/contact':
+      case '/contact/':
+        return 'Contact';
       default:
-        return 'Page';
+        // Handle dynamic routes or return a default
+        if (cleanPath.startsWith('/')) {
+          // Capitalize first letter and replace hyphens with spaces
+          return cleanPath.split('/')[1]
+            .split('-')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ');
+        }
+        return 'Portfolio';
     }
   };
 
-  // Close mobile menu when route changes
+  // Update document title and close mobile menu when route changes
   useEffect(() => {
-    setIsMenuOpen(false);
+    const pageTitle = getPageTitle(location.pathname);
+    if (pageTitle !== 'Page') {
+      document.title = `${pageTitle} | Siva Surya P`;
+    } else {
+      document.title = 'Siva Surya P | Portfolio';
+    }
+    closeAllMenus();
   }, [location]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+    if (isDropdownOpen) setIsDropdownOpen(false); // Close dropdown if menu is toggled
+  };
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const closeAllMenus = () => {
+    setIsMenuOpen(false);
+    setIsDropdownOpen(false);
   };
 
   return (
     <>
       <nav className={`navbar navbar-expand-lg navbar-${theme} bg-${theme} shadow-sm`}>
         <div className="container-fluid">
-          <Link className="navbar-brand fw-bold" to="/">Siva Surya P</Link>
           <button 
             className="navbar-toggler" 
             type="button" 
             onClick={toggleMenu}
+            aria-controls="navbarNav"
             aria-expanded={isMenuOpen ? 'true' : 'false'}
             aria-label="Toggle navigation"
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div 
-            className={`collapse navbar-collapse${isMenuOpen ? ' show' : ''}`} 
-            id="navbarNav"
-          >
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <Link 
-                  className={`nav-link${location.pathname === '/' ? ' active' : ''}`} 
-                  to="/"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Home
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link 
-                  className={`nav-link${location.pathname === '/skills' ? ' active' : ''}`} 
-                  to="/skills"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Skills & Learning
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link 
-                  className={`nav-link${location.pathname === '/projects' ? ' active' : ''}`} 
-                  to="/projects"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Projects
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link 
-                  className={`nav-link${location.pathname === '/experience' ? ' active' : ''}`} 
-                  to="/experience"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Experience
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link 
-                  className={`nav-link${location.pathname === '/coding-profile' ? ' active' : ''}`} 
-                  to="/coding-profile"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Coding Profile
-                </Link>
-              </li>
-              {/* Contact Me tab is hidden as requested */}
-              {/* <li className="nav-item">
-                <Link className={`nav-link${location.pathname === '/contact' ? ' active' : ''}`} to="/contact">Contact Me</Link>
-              </li> */}
-            </ul>
+
+          <div className={`collapse navbar-collapse${isMenuOpen ? ' show' : ''}`} id="navbarNav">
+            <div className="d-flex align-items-center me-auto">
+              <ul className="navbar-nav">
+                <li className="nav-item dropdown">
+                  <button 
+                    className="nav-link"
+                    type="button"
+                    id="portfolioDropdown"
+                    aria-haspopup="true"
+                    aria-expanded={isDropdownOpen}
+                    onClick={toggleDropdown}
+                  >
+                    <FaBars size={20} />
+                  </button>
+                  <ul className={`dropdown-menu${isDropdownOpen ? ' show' : ''}`} aria-labelledby="portfolioDropdown">
+                    <li><Link className="dropdown-item" to="/" onClick={closeAllMenus}><i className="fas fa-home me-2"></i>Home</Link></li>
+                    <li><Link className="dropdown-item" to="/skills" onClick={closeAllMenus}><i className="fas fa-code me-2"></i>Skills & Learning</Link></li>
+                    <li><Link className="dropdown-item" to="/projects" onClick={closeAllMenus}><i className="fas fa-project-diagram me-2"></i>Projects</Link></li>
+                    <li><Link className="dropdown-item" to="/experience" onClick={closeAllMenus}><i className="fas fa-briefcase me-2"></i>Experience</Link></li>
+                    <li><Link className="dropdown-item" to="/coding-profile" onClick={closeAllMenus}><i className="fas fa-laptop-code me-2"></i>Coding Profile</Link></li>
+                    <li><Link className="dropdown-item" to="/github" onClick={closeAllMenus}><i className="fab fa-github me-2"></i>GitHub Profile</Link></li>
+                  </ul>
+                </li>
+              </ul>
+              <span className="navbar-brand fw-bold ms-2">Siva Surya P</span>
+            </div>
+            
             <button 
-              className="btn btn-outline-primary ms-2" 
+              className="btn btn-outline-primary" 
               onClick={toggleTheme}
               aria-label="Toggle theme"
             >

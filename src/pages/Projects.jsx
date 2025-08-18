@@ -6,12 +6,10 @@ function Projects() {
       duration: 'Mar 2025 - Apr 2025',
       description: 'A comprehensive learning management system with course and batch management capabilities.',
       responsibilities: [
-        'Developed and maintained backend APIs in MongoDB for course and batch management',
-        'Implemented advanced form functionalities with autocomplete dropdowns',
-        'Structured data handling between Angular frontend and RESTful APIs',
-        'Collaborated on designing intuitive UI screens for administrative tasks'
-      ],
-      techStack: ['Angular 18', 'Node.js 18', 'MongoDB 10', 'REST APIs']
+        ' Designed and optimized RESTful APIs using Node.js and MongoDB for course and batchmanagement, reducing DB load by 30%.',
+        ' Developed and integrated intelligent dropdowns powered by dynamic query parameters, in collaboration with UI/UX teams, to align the backend logic with intuitive front-end interfaces - reducing the completion time of admin tasks by 35% anddecreasing data entry errors by 25%, resulting in faster and more accurate workflows.'
+        ],
+      techStack: ['Angular 18', 'Node.js 18', 'MongoDB 10', 'REST APIs','Bootstrap']
     },
     {
       name: 'SWMS',
@@ -19,10 +17,9 @@ function Projects() {
       duration: 'Feb 2025 - Mar 2025',
       description: 'A web application with optimized user interface and experience.',
       responsibilities: [
-        'Managed and maintained Angular-based web application',
-        'Developed and optimized front-end components',
-        'Implemented data binding, services, and reusable components',
-        'Debugged and resolved UI/UX issues'
+        'Built dynamic, responsive UI components in Angular using lazy loading and optimized change detection — reduced page load time by 25% and improved performance for smoother user experiences.',
+        'Refactored and modernized legacy codebase, removing redundant logic and applying best practices — resolved 50+ critical bugs, boosting stability by 40% and cutting production incidents by 30%.',
+        ' Implemented Angular services, optimized routing, and applied two-way data binding — increased user interaction speed by 20% and improved application responsiveness.'
       ],
       techStack: ['Angular 9', 'Node.js 14', 'MySQL', 'Bootstrap']
     }

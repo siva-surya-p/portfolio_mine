@@ -33,6 +33,28 @@
   }
 }
 
+.page {
+  padding: 2rem;
+}
+
+/* GitHub Calendar Customizations */
+.react-activity-calendar {
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+.react-activity-calendar__count {
+  font-size: 0.8rem;
+}
+
+.app-container.dark .react-activity-calendar__count {
+  color: var(--dark-text);
+}
+
+.app-container.dark .react-activity-calendar__legend > li {
+  color: var(--dark-text);
+}
+
 .card {
   padding: 2em;
 }
@@ -69,6 +91,7 @@
   --dark-text: #e6e6e6;
   --dark-secondary: #16213e;
   --dark-border: #2a2a3c;
+  --primary: #007bff;
 }
 
 /* Light Theme */
@@ -273,8 +296,9 @@
 /* Breadcrumb Navigation Styling */
 .breadcrumb-nav {
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border-top: 1px solid #f8f9fa; /* Match navbar bottom border */
+  position: relative;
+  z-index: 1040; /* Below navbar but above other content */
 }
 
 .breadcrumb {
@@ -324,8 +348,9 @@
 /* Dark mode breadcrumb styling */
 .app-container.dark .breadcrumb-nav {
   background: linear-gradient(135deg, #2a2a3c 0%, #1a1a2e 100%);
-  border-bottom: 1px solid var(--dark-border);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-top: 1px solid #2a2a3c; /* Match dark navbar bottom border */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  margin-top: -1px; /* Remove gap between navbar and breadcrumb */
 }
 
 .app-container.dark .breadcrumb-item.active {
@@ -432,10 +457,70 @@
   color: #a3cff9;
 }
 
-.navbar {
-  margin-bottom: 2rem;
+/* Portfolio Dropdown Styling */
+
+.dropdown-menu {
+  border: none;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  min-width: 12rem;
+  padding: 0.5rem 0;
+  margin-top: 0.5rem;
+  z-index: 1060; /* Ensure dropdown stays above navbar and breadcrumb */
+}
+
+.dropdown-item {
   padding: 0.5rem 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  color: var(--text);
+  transition: all 0.2s ease;
+  border-radius: 0.25rem;
+  margin: 0;
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+  background-color: rgba(0, 123, 255, 0.1) !important;
+  color: var(--primary) !important;
+  text-decoration: none;
+  transform: none;
+  outline: none;
+}
+
+.dropdown-item.active {
+  background-color: var(--primary);
+  color: white;
+}
+
+.dropdown-item.active:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
+/* Dark mode dropdown styling */
+.app-container.dark .dropdown-menu {
+  background-color: var(--dark-secondary);
+  border: 1px solid var(--dark-border);
+}
+
+.app-container.dark .dropdown-item {
+  color: var(--dark-text);
+}
+
+.app-container.dark .dropdown-item:hover, .app-container.dark .dropdown-item:focus {
+  background-color: rgba(128, 189, 255, 0.1) !important;
+  color: #80bdff !important;
+  text-decoration: none;
+  outline: none;
+}
+
+.app-container.dark .dropdown-item.active {
+  background-color: var(--primary);
+  color: white;
+}
+
+.navbar {
+  padding: 0.75rem 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1050; /* Increased z-index to stay above breadcrumb */
 }
 
 .navbar-brand {

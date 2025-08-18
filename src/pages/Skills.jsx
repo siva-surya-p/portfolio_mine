@@ -1,5 +1,5 @@
-import { FaJs, FaPython, FaHtml5, FaCss3Alt, FaNodeJs, FaDatabase, FaBootstrap, FaGitAlt, FaJava } from 'react-icons/fa'
-import { SiMongodb, SiLeetcode, SiAndroid, SiPostman, SiOpenai } from 'react-icons/si'
+import { FaJs, FaPython, FaHtml5, FaCss3Alt, FaNodeJs, FaDatabase, FaBootstrap, FaGitAlt, FaJava, FaAngular } from 'react-icons/fa'
+import { SiMongodb, SiLeetcode, SiAndroid, SiPostman, SiOpenai, SiJquery, SiExpress, SiTypescript } from 'react-icons/si'
 import { VscCode } from 'react-icons/vsc'
 
 // AI Tool Icons
@@ -22,10 +22,13 @@ const skills = [
   { name: 'Postman', icon: <SiPostman color="#ff6c37" /> },
   { name: 'Java', icon: <FaJava color="#007396" /> },
   { name: 'VS Code', icon: <VscCode color="#007acc" /> },
+  { name: 'Angular', icon: <FaAngular color="#dd0031" /> },
+  { name: 'jQuery', icon: <SiJquery color="#0769ad" /> },
+  { name: 'Express.js', icon: <SiExpress color="#000000" /> },
+  { name: 'TypeScript', icon: <SiTypescript color="#3178c6" /> },
 ]
 
 const learning = [
-  { name: 'Java', icon: <FaJava color="#007396" /> },
   { name: 'Spring Boot', icon: <FaJava color="#6DB33F" /> },
   { name: 'React JS', icon: <FaJs color="#61DAFB" /> },
   { name: 'System Design', icon: <FaDatabase color="#00758f" /> },
