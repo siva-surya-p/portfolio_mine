@@ -1,6 +1,13 @@
-import { FaJs, FaPython, FaHtml5, FaCss3Alt, FaNodeJs, FaDatabase, FaBootstrap, FaGitAlt, FaJava, FaRobot } from 'react-icons/fa'
-import { SiMongodb, SiLeetcode, SiAndroid, SiPostman, SiOpenai, SiAnthropic, SiGoogle } from 'react-icons/si'
+import { FaJs, FaPython, FaHtml5, FaCss3Alt, FaNodeJs, FaDatabase, FaBootstrap, FaGitAlt, FaJava } from 'react-icons/fa'
+import { SiMongodb, SiLeetcode, SiAndroid, SiPostman, SiOpenai } from 'react-icons/si'
 import { VscCode } from 'react-icons/vsc'
+
+// AI Tool Icons
+import cursorIcon from '../assets/cursor-icon.png'
+import windsurfIcon from '../assets/windsurf-icon.png'
+import copilotIcon from '../assets/copilot-icon.png'
+import claudeIcon from '../assets/claude-icon.png'
+import geminiIcon from '../assets/gemini-icon.png'
 
 const skills = [
   { name: 'JavaScript', icon: <FaJs color="#f7df1e" /> },
@@ -27,11 +34,11 @@ const learning = [
 
 const aiTools = [
   { name: 'ChatGPT', icon: <SiOpenai color="#10a37f" /> },
-  { name: 'Cursor', icon: <VscCode color="#007acc" /> },
-  { name: 'Windsurf', icon: <FaRobot color="#6366f1" /> },
-  { name: 'Microsoft Copilot', icon: <FaRobot color="#00a4ef" /> },
-  { name: 'Claude', icon: <SiAnthropic color="#d97706" /> },
-  { name: 'Gemini', icon: <SiGoogle color="#4285f4" /> },
+  { name: 'Cursor', icon: <img src={cursorIcon} alt="Cursor" style={{ width: '24px', height: '24px' }} /> },
+  { name: 'Windsurf', icon: <img src={windsurfIcon} alt="Windsurf" style={{ width: '24px', height: '24px' }} /> },
+  { name: 'Microsoft Copilot', icon: <img src={copilotIcon} alt="Microsoft Copilot" style={{ width: '24px', height: '24px' }} /> },
+  { name: 'Claude', icon: <img src={claudeIcon} alt="Claude" style={{ width: '24px', height: '24px' }} /> },
+  { name: 'Gemini', icon: <img src={geminiIcon} alt="Gemini" style={{ width: '24px', height: '24px' }} /> },
 ]
 
 function Skills() {
