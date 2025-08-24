@@ -85,12 +85,13 @@
 }
 
 :root {
-  --light-bg: #f8f9fa;
+  --light-bg: #ffffff;
   --light-text: #212529;
-  --dark-bg: #1a1a2e;
+  /* Pure black dark theme */
+  --dark-bg: #000000;
   --dark-text: #e6e6e6;
-  --dark-secondary: #16213e;
-  --dark-border: #2a2a3c;
+  --dark-secondary: #0a0a0a; /* cards/navbar */
+  --dark-border: #1f1f1f;    /* subtle borders on black */
   --primary: #007bff;
 }
 
@@ -142,8 +143,8 @@
 .app-container.dark .form-select,
 .app-container.dark .form-control:focus,
 .app-container.dark .form-select:focus {
-  background-color: #2a2a3c;
-  border-color: #3e3e5e;
+  background-color: #0f0f0f;
+  border-color: #2a2a2a;
   color: var(--dark-text);
 }
 
@@ -301,8 +302,9 @@
 
 /* Breadcrumb Navigation Styling */
 .breadcrumb-nav {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  border-top: 1px solid #f8f9fa; /* Match navbar bottom border */
+  /* Match page/body background instead of separate gradient */
+  background: transparent;
+  border-top: 1px solid #f8f9fa; /* Light theme subtle divider */
   position: relative;
   z-index: 1040; /* Below navbar but above other content */
 }
@@ -353,9 +355,10 @@
 
 /* Dark mode breadcrumb styling */
 .app-container.dark .breadcrumb-nav {
-  background: linear-gradient(135deg, #2a2a3c 0%, #1a1a2e 100%);
-  border-top: 1px solid #2a2a3c; /* Match dark navbar bottom border */
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  /* Match dark theme container/navbar background */
+  background: transparent;
+  border-top: 1px solid var(--dark-border);
+  box-shadow: none;
   margin-top: -1px; /* Remove gap between navbar and breadcrumb */
 }
 
